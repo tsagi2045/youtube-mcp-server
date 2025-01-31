@@ -1,4 +1,6 @@
 # YouTube MCP Server
+[![smithery badge](https://smithery.ai/badge/@ZubeidHendricks/youtube)](https://smithery.ai/server/@ZubeidHendricks/youtube)
+
 A Model Context Protocol (MCP) server implementation for YouTube, enabling AI language models to interact with YouTube content through a standardized interface.
 
 ## Features
@@ -29,6 +31,15 @@ A Model Context Protocol (MCP) server implementation for YouTube, enabling AI la
 
 ## Installation
 
+### Installing via Smithery
+
+To install YouTube MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ZubeidHendricks/youtube):
+
+```bash
+npx -y @smithery/cli install @ZubeidHendricks/youtube --client claude
+```
+
+### Manual Installation
 ```bash
 npm install @modelcontextprotocol/server-youtube
 ```
