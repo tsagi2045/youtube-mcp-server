@@ -55,6 +55,66 @@ Add this to your MCP client configuration (e.g. Claude Desktop):
 }
 ```
 
+### Using with VS Code
+
+For one-click installation, click one of the install buttons below:
+
+[![Install with NPX in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=youtube&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-youtube%22%5D%2C%22env%22%3A%7B%22YOUTUBE_API_KEY%22%3A%22%24%7Binput%3AapiKey%7D%22%7D%7D&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22apiKey%22%2C%22description%22%3A%22YouTube+API+Key%22%2C%22password%22%3Atrue%7D%5D) [![Install with NPX in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=youtube&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-youtube%22%5D%2C%22env%22%3A%7B%22YOUTUBE_API_KEY%22%3A%22%24%7Binput%3AapiKey%7D%22%7D%7D&inputs=%5B%7B%22type%22%3A%22promptString%22%2C%22id%22%3A%22apiKey%22%2C%22description%22%3A%22YouTube+API+Key%22%2C%22password%22%3Atrue%7D%5D&quality=insiders)
+
+### Manual Installation
+
+If you prefer manual installation, first check the install buttons at the top of this section. Otherwise, follow these steps:
+
+Add the following JSON block to your User Settings (JSON) file in VS Code. You can do this by pressing `Ctrl + Shift + P` and typing `Preferences: Open User Settings (JSON)`.
+
+```json
+{
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "apiKey",
+        "description": "YouTube API Key",
+        "password": true
+      }
+    ],
+    "servers": {
+      "youtube": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-youtube"],
+        "env": {
+          "YOUTUBE_API_KEY": "${input:apiKey}"
+        }
+      }
+    }
+  }
+}
+```
+
+Optionally, you can add it to a file called `.vscode/mcp.json` in your workspace:
+
+```json
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "apiKey",
+      "description": "YouTube API Key",
+      "password": true
+    }
+  ],
+  "servers": {
+    "youtube": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-youtube"],
+      "env": {
+        "YOUTUBE_API_KEY": "${input:apiKey}"
+      }
+    }
+  }
+}
+```
+
 ## YouTube API Setup
 1. Go to Google Cloud Console
 2. Create a new project or select an existing one
