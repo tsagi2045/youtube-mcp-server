@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { startMcpServer } from './server';
 
 // Check for required environment variables

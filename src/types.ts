@@ -1,19 +1,79 @@
-export interface VideoStats {
-  views: number;
-  likes: number;
-  comments: number;
-  favorites: number;
+/**
+ * Video details parameters
+ */
+export interface VideoParams {
+  videoId: string;
+  parts?: string[];
 }
 
-export interface VideoDetails {
-  id: string;
-  title: string;
-  description: string;
-  publishedAt: string;
-  thumbnails: any;
+/**
+ * Search videos parameters
+ */
+export interface SearchParams {
+  query: string;
+  maxResults?: number;
+}
+
+/**
+ * Trending videos parameters
+ */
+export interface TrendingParams {
+  regionCode?: string;
+  maxResults?: number;
+  videoCategoryId?: string;
+}
+
+/**
+ * Related videos parameters
+ */
+export interface RelatedVideosParams {
+  videoId: string;
+  maxResults?: number;
+}
+
+/**
+ * Transcript parameters
+ */
+export interface TranscriptParams {
+  videoId: string;
+  language?: string;
+}
+
+/**
+ * Search transcript parameters
+ */
+export interface SearchTranscriptParams {
+  videoId: string;
+  query: string;
+  language?: string;
+}
+
+/**
+ * Channel parameters
+ */
+export interface ChannelParams {
   channelId: string;
-  channelTitle: string;
-  tags?: string[];
-  duration: string;
-  statistics: VideoStats;
+}
+
+/**
+ * Channel videos parameters
+ */
+export interface ChannelVideosParams {
+  channelId: string;
+  maxResults?: number;
+}
+
+/**
+ * Playlist parameters
+ */
+export interface PlaylistParams {
+  playlistId: string;
+}
+
+/**
+ * Playlist items parameters
+ */
+export interface PlaylistItemsParams {
+  playlistId: string;
+  maxResults?: number;
 }
