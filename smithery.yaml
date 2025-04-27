@@ -18,4 +18,11 @@ startCommand:
   commandFunction:
     # A function that produces the CLI command to start the MCP on stdio.
     |-
-    (config) => ({command: 'node', args: ['dist/index.js'], env: {YOUTUBE_API_KEY: config.youtubeApiKey, YOUTUBE_TRANSCRIPT_LANG: config.youtubeTranscriptLang || 'en'}})
+    (config) => ({
+      command: 'node', 
+      args: ['dist/index.js'], 
+      env: {
+        YOUTUBE_API_KEY: config.youtubeApiKey, 
+        YOUTUBE_TRANSCRIPT_LANG: config.youtubeTranscriptLang || 'en'
+      }
+    })
