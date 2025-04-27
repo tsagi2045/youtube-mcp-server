@@ -6,18 +6,18 @@ import { PlaylistService } from './services/playlist';
 import { ChannelService } from './services/channel';
 
 export async function startMcpServer() {
-    // Create instances of service classes
-    const videoService = new VideoService();
-    const transcriptService = new TranscriptService();
-    const playlistService = new PlaylistService();
-    const channelService = new ChannelService();
-
     // Create MCP server
     const server = new McpServer({
         name: 'YouTube MCP Server',
         version: '1.0.0',
         description: 'MCP Server for interacting with YouTube content and services',
     });
+
+    // Create service instances - they won't initialize APIs until methods are called
+    const videoService = new VideoService();
+    const transcriptService = new TranscriptService();
+    const playlistService = new PlaylistService();
+    const channelService = new ChannelService();
 
     // Register video functions
     server.addMethod({
@@ -160,7 +160,7 @@ export async function startMcpServer() {
 
     // Log the server info
     console.log(`Starting YouTube MCP Server v1.0.0`);
-    console.log(`Environment: API Key ${process.env.YOUTUBE_API_KEY ? 'configured' : 'missing'}`);
+    console.log(`Server will validate YouTube API key when methods are called`);
     
     // Start the server
     await server.listen();

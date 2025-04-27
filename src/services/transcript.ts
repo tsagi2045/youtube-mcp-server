@@ -5,8 +5,17 @@ import { TranscriptParams, SearchTranscriptParams } from '../types';
  * Service for interacting with YouTube video transcripts
  */
 export class TranscriptService {
+  // No YouTube API key needed for transcripts, but we'll implement the same pattern
+  private initialized = false;
+
   constructor() {
-    // No constructor arguments needed for YouTube transcript
+    // No initialization needed
+  }
+
+  private initialize() {
+    if (this.initialized) return;
+    // No API key needed for transcripts, but we'll check if language is set
+    this.initialized = true;
   }
 
   /**
@@ -17,6 +26,8 @@ export class TranscriptService {
     language = process.env.YOUTUBE_TRANSCRIPT_LANG || 'en' 
   }: TranscriptParams): Promise<any> {
     try {
+      this.initialize();
+      
       // YoutubeTranscript.fetchTranscript only accepts videoId
       const transcript = await YoutubeTranscript.fetchTranscript(videoId);
       
@@ -39,6 +50,8 @@ export class TranscriptService {
     language = process.env.YOUTUBE_TRANSCRIPT_LANG || 'en' 
   }: SearchTranscriptParams): Promise<any> {
     try {
+      this.initialize();
+      
       const transcript = await YoutubeTranscript.fetchTranscript(videoId);
       
       // Search through transcript for the query
@@ -65,6 +78,8 @@ export class TranscriptService {
     language = process.env.YOUTUBE_TRANSCRIPT_LANG || 'en' 
   }: TranscriptParams): Promise<any> {
     try {
+      this.initialize();
+      
       const transcript = await YoutubeTranscript.fetchTranscript(videoId);
       
       // Format timestamps in human-readable format

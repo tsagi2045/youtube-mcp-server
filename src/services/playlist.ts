@@ -6,8 +6,18 @@ import { PlaylistParams, PlaylistItemsParams, SearchParams } from '../types';
  */
 export class PlaylistService {
   private youtube;
+  private initialized = false;
 
   constructor() {
+    // Don't initialize in constructor
+  }
+
+  /**
+   * Initialize the YouTube client only when needed
+   */
+  private initialize() {
+    if (this.initialized) return;
+    
     const apiKey = process.env.YOUTUBE_API_KEY;
     if (!apiKey) {
       throw new Error('YOUTUBE_API_KEY environment variable is not set.');
@@ -17,6 +27,8 @@ export class PlaylistService {
       version: "v3",
       auth: apiKey
     });
+    
+    this.initialized = true;
   }
 
   /**
@@ -26,6 +38,8 @@ export class PlaylistService {
     playlistId 
   }: PlaylistParams): Promise<any> {
     try {
+      this.initialize();
+      
       const response = await this.youtube.playlists.list({
         part: ['snippet', 'contentDetails'],
         id: [playlistId]
@@ -45,6 +59,8 @@ export class PlaylistService {
     maxResults = 50 
   }: PlaylistItemsParams): Promise<any[]> {
     try {
+      this.initialize();
+      
       const response = await this.youtube.playlistItems.list({
         part: ['snippet', 'contentDetails'],
         playlistId,
@@ -65,6 +81,8 @@ export class PlaylistService {
     maxResults = 10 
   }: SearchParams): Promise<any[]> {
     try {
+      this.initialize();
+      
       const response = await this.youtube.search.list({
         part: ['snippet'],
         q: query,

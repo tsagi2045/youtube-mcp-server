@@ -6,8 +6,18 @@ import { VideoParams, SearchParams, TrendingParams, RelatedVideosParams } from '
  */
 export class VideoService {
   private youtube;
+  private initialized = false;
 
   constructor() {
+    // Don't initialize in constructor
+  }
+
+  /**
+   * Initialize the YouTube client only when needed
+   */
+  private initialize() {
+    if (this.initialized) return;
+    
     const apiKey = process.env.YOUTUBE_API_KEY;
     if (!apiKey) {
       throw new Error('YOUTUBE_API_KEY environment variable is not set.');
@@ -17,6 +27,8 @@ export class VideoService {
       version: 'v3',
       auth: apiKey
     });
+    
+    this.initialized = true;
   }
 
   /**
@@ -27,6 +39,8 @@ export class VideoService {
     parts = ['snippet', 'contentDetails', 'statistics'] 
   }: VideoParams): Promise<any> {
     try {
+      this.initialize();
+      
       const response = await this.youtube.videos.list({
         part: parts,
         id: [videoId]
@@ -46,6 +60,8 @@ export class VideoService {
     maxResults = 10 
   }: SearchParams): Promise<any[]> {
     try {
+      this.initialize();
+      
       const response = await this.youtube.search.list({
         part: ['snippet'],
         q: query,
@@ -66,6 +82,8 @@ export class VideoService {
     videoId 
   }: { videoId: string }): Promise<any> {
     try {
+      this.initialize();
+      
       const response = await this.youtube.videos.list({
         part: ['statistics'],
         id: [videoId]
@@ -86,6 +104,8 @@ export class VideoService {
     videoCategoryId = ''
   }: TrendingParams): Promise<any[]> {
     try {
+      this.initialize();
+      
       const params: any = {
         part: ['snippet', 'contentDetails', 'statistics'],
         chart: 'mostPopular',
@@ -113,6 +133,8 @@ export class VideoService {
     maxResults = 10 
   }: RelatedVideosParams): Promise<any[]> {
     try {
+      this.initialize();
+      
       const response = await this.youtube.search.list({
         part: ['snippet'],
         relatedToVideoId: videoId,
