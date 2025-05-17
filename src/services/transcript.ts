@@ -19,7 +19,12 @@ export class TranscriptService {
   }
 
   /**
-   * Get the transcript of a YouTube video
+   * Get the transcript of a YouTube video.
+   *
+   * Note: The `language` parameter is accepted for API
+   *       consistency but is currently ignored. The
+   *       transcript is returned in the default language
+   *       provided by YouTube.
    */
   async getTranscript({ 
     videoId, 
@@ -42,7 +47,10 @@ export class TranscriptService {
   }
 
   /**
-   * Search within a transcript
+   * Search within a transcript.
+   *
+   * The `language` parameter is currently ignored and
+   * all searches are performed on the default transcript.
    */
   async searchTranscript({ 
     videoId, 
@@ -71,7 +79,11 @@ export class TranscriptService {
   }
   
   /**
-   * Get transcript with timestamps
+   * Get transcript with timestamps.
+   *
+   * The `language` option is ignored; timestamps are
+   * generated from the default transcript returned by
+   * YouTube.
    */
   async getTimestampedTranscript({ 
     videoId, 

@@ -11,7 +11,7 @@ A Model Context Protocol (MCP) server implementation for YouTube, enabling AI la
 
 ### Transcript Management
 * Retrieve video transcripts
-* Support for multiple languages
+* Planned support for multiple languages
 * Get timestamped captions
 * Search within transcripts
 
@@ -36,7 +36,8 @@ npm install @modelcontextprotocol/server-youtube
 ## Configuration
 Set the following environment variables:
 * `YOUTUBE_API_KEY`: Your YouTube Data API key
-* `YOUTUBE_TRANSCRIPT_LANG`: Default language for transcripts (optional, defaults to 'en')
+* `YOUTUBE_TRANSCRIPT_LANG`: Default language for transcripts (optional, defaults to 'en').
+  Currently unused and reserved for future support of transcript languages.
 
 ## Using with MCP Client
 Add this to your MCP client configuration (e.g. Claude Desktop):
@@ -73,8 +74,8 @@ const video = await youtube.videos.getVideo({
 
 // Get video transcript
 const transcript = await youtube.transcripts.getTranscript({
-  videoId: "video-id",
-  language: "en"
+  videoId: "video-id"
+  // `language` can be provided but is currently ignored
 });
 
 // Search videos
