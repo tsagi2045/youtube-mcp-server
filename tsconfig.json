@@ -22,7 +22,8 @@
     "src/index.ts",
     "src/server.ts",
     "src/cli.ts",
-    "src/types.ts"
+    "src/types.ts",
+    "src/types/**/*"
   ],
   "exclude": [
     "node_modules",

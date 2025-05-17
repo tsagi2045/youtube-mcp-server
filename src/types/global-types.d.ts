@@ -3,6 +3,9 @@
 // Global Utility Types
 type Nullable<T> = T | null | undefined;
 
+// NodeJS Globals
+declare var process: any;
+
 // Google Services
 declare namespace google {
   namespace cloud {

@@ -2,6 +2,7 @@ import { MCPFunction, MCPFunctionGroup } from "@modelcontextprotocol/sdk";
 import { YoutubeTranscript } from "youtube-transcript";
 import * as ytdl from "ytdl-core";
 import * as fs from "fs/promises";
+import { google } from 'googleapis';
 
 // Utility functions
 function safeGet<T>(obj: any, path: string, defaultValue?: T): T | undefined {
