@@ -18,7 +18,8 @@ This server can be deployed in two ways:
 
 The server requires the following environment variables:
 - `YOUTUBE_API_KEY`: Your YouTube Data API key (required)
-- `YOUTUBE_TRANSCRIPT_LANG`: Default language for transcripts (optional, defaults to 'en')
+- `YOUTUBE_TRANSCRIPT_LANG`: Default language for transcripts (optional, defaults to 'en').
+  Currently unused and reserved for future support of transcript languages.
 
 ## API Endpoints
 
