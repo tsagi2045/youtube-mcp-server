@@ -200,6 +200,12 @@ npm run build
 npm run lint
 ```
 
+## `src/functions` 디렉터리
+
+`src/functions` 폴더에는 초기 MCP 함수 구현이 남아 있습니다. 현재 빌드와 실행에는 사용되지 않으며,
+`tsconfig.json`의 `exclude` 항목에 추가되어 컴파일 대상에서 제외됩니다.
+실제 기능 구현은 `src/services` 디렉터리에서 관리되므로, 해당 폴더의 코드는 참고용으로만 보존됩니다.
+
 ## Contributing
 See CONTRIBUTING.md for information about contributing to this repository.
 

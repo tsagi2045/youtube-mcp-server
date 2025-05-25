@@ -191,6 +191,11 @@ npm run build
 npm run lint
 ```
 
+## `src/functions` 디렉터리
+
+`src/functions` 폴더는 초기 MCP 함수 구현을 보관하기 위해 남겨두었습니다. 현행 코드에서는 사용하지 않고
+`tsconfig.json`에서 제외되어 컴파일되지 않습니다. 실제 서비스 로직은 `src/services` 경로에서 관리됩니다.
+
 ## Contributing
 See CONTRIBUTING.md for information about contributing to this repository.
 

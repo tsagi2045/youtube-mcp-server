@@ -27,6 +27,7 @@
   ],
   "exclude": [
     "node_modules",
+    // 초기 MCP 함수 구현. 현재 사용되지 않아 빌드에서 제외합니다.
     "src/functions/**/*"
   ]
 }
